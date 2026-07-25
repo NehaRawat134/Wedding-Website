@@ -1,0 +1,2187 @@
+/* Import */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400..900&display=swap');
+
+/* Reset */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Playfair Display', serif;
+  overflow-x: hidden;
+}
+
+/* Navbar*/
+.custom-navbar{
+  background: rgba(0,0,0,0.35);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  padding: 10px 0;              /* navbar height reduced */
+  transition: all .35s ease;
+  z-index: 999;
+}
+
+/* Dynamic class added by JavaScript on scroll */
+.custom-navbar.navbar-scrolled{
+    background: #111 !important;
+    box-shadow: 0 4px 14px rgba(0,0,0,.35);
+    padding: 8px 0;
+}
+
+.custom-navbar .container{
+    display: flex;
+    align-items: center;
+}
+
+/* Logo Container */
+.logo{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+}
+
+/* Logo image */
+.logo img{
+    width: 65px;                  /* reduced from 135px */
+    height: 65px;
+    object-fit: cover;
+}
+
+.logo h1{
+    margin: 0;
+    font-size: 2rem;              /* about 32px */
+    color: #fff;
+    line-height: 1;
+}
+
+/* Nav Links */
+.navbar-nav{
+    align-items: center;
+    gap: 8px;
+}
+
+.navbar-nav .nav-link{
+    position: relative;
+    color: #fff !important;
+    margin: 0 6px;
+    padding: 8px 10px !important;
+    font-size: 16px;              /* slightly smaller */
+    font-weight: 500;
+    transition: color .3s ease;
+}
+
+.navbar-nav .nav-link::after{
+    content: '';
+    position: absolute;
+    left: 10px;
+    right: 10px;
+    bottom: 2px;
+    height: 2px;
+    background: #ffcc70;
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform .3s ease;
+}
+
+.navbar-nav .nav-link:hover{
+    color: #ffcc70 !important;
+}
+
+.navbar-nav .nav-link:hover::after{
+    transform: scaleX(1);
+}
+
+
+/* Dropdown */
+.dropdown-menu {
+  background: #111;
+  border: none;
+}
+
+.dropdown-item {
+  color: #fff;
+}
+
+.dropdown-item:hover {
+  background: #ffcc70;
+  color: #000;
+}
+
+/* Social Icons */
+.social-icons{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-left: 18px;
+}
+
+.social-icons a{
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.342);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #111; 
+    text-decoration: none;
+    transition: all .3s ease;
+}
+
+.social-icons a:hover{
+    background: #ffcc70;
+    color: #111;
+    transform: translateY(-3px) scale(1.08);
+    box-shadow: 0 8px 18px rgba(255,204,112,.35);
+}
+
+
+/* Responsive Styles */
+@media (max-width: 991px) {
+  .custom-navbar {
+    background: rgba(0, 0, 0, 0.95);
+  }
+
+  .navbar-nav {
+    /* padding: 20px 0; */
+    text-align: center;
+  }
+
+  .social-icons {
+    margin-top: 15px;
+    justify-content: center;
+    width: 100%;
+    padding-bottom: 15px;
+  }
+
+  .logo img {
+    width: 60px;
+    height: 60px;
+  }
+}
+
+/* HERO SECTION */
+.hero-section {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+}
+
+/* BACKGROUND IMAGE */
+.hero-bg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: url('../Images/wedding-couple-image.jpg') no-repeat center center/cover;
+  z-index: 1;
+}
+
+/* DARK OVERLAY */
+.overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 2;
+}
+
+/* CONTENT */
+.hero-content {
+  position: relative;
+  z-index: 3;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 0 20px;
+}
+
+/* TEXT STYLE */
+.hero-title {
+  font-size: 4rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+.hero-subtitle {
+  font-size: 1.4rem;
+  margin-bottom: 30px;
+  font-style: italic;
+}
+
+/* BUTTON */
+.hero-btn {
+  display: inline-block;
+  padding: 12px 35px;
+  background-color: transparent;
+  color: #fff;
+  border: 2px solid #fff;
+  text-decoration: none;
+  border-radius: 30px;
+  font-weight: 600;
+  transition: 0.3s ease;
+}
+
+.hero-btn:hover {
+  background-color: #a17848;
+  color: #fff;
+}
+
+/* Modal Background */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.7);
+  overflow-y: auto; 
+}
+
+/* Modal Box */
+.modal-content {
+  background: #fff;
+  width: 90%;
+  max-width: 450px;
+  margin: 8% auto;
+  padding: 25px;
+  border-radius: 10px;
+  position: relative;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+/* Close Button */
+.close-btn {
+  position: absolute;
+  right: 15px;
+  top: 10px;
+  font-size: 28px;
+  cursor: pointer;
+}
+
+/* Inputs */
+.modal-content input {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box; 
+}
+
+/* Submit Button */
+.modal-content button {
+  width: 100%;
+  padding: 12px;
+  background: #a17848;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.modal-content button:hover {
+  background: #8b6438;
+}
+
+#errorMsg {
+  color: red;
+  margin-top: 10px;
+  font-weight: 600;
+}
+
+/* RESPONSIVE MEDIA  */
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: 3rem; 
+  }
+  
+  .hero-subtitle {
+    font-size: 1.2rem;
+  }
+  
+  .modal-content {
+    margin: 15% auto; 
+    padding: 20px;
+  }
+}
+
+/* Mobile Devices (max-width: 480px) */
+@media (max-width: 480px) {
+  .hero-title {
+    font-size: 2.2rem; 
+    letter-spacing: 1px;
+  }
+  
+  .hero-subtitle {
+    font-size: 1rem;
+    margin-bottom: 20px;
+  }
+  
+  .hero-btn {
+    padding: 10px 25px;
+    font-size: 0.9rem;
+  }
+  
+  .modal-content {
+    margin: 25% auto; 
+    width: 95%; 
+    padding: 15px;
+  }
+  
+  .modal-content h2 {
+    font-size: 1.5rem; 
+  }
+}
+
+
+/* Our Love Story */
+.our-story {
+  background: #fffaf4;
+}
+
+/* LEFT ALIGN */
+.our-story .row {
+  justify-content: flex-start;
+}
+
+.our-story h1 {
+  font-weight: 700;
+  color: #222;
+}
+
+.our-story p {
+  text-align: left;
+  color: #555;
+}
+
+.story-card {
+  padding: 20px;
+  border-radius: 25px;
+  border: 1px solid #000;
+  width: 130%;
+  height: 100%;
+  background: #fff;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.story-card p {
+  text-align: center;
+}
+
+.story-card img {
+  max-width: 80px;
+  height: auto;
+}
+
+.story-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.story-card:hover img {
+  transform: scale(1.1);
+}
+
+
+/* Right images wrapper */
+.image-wrapper {
+  display: flex;
+  gap: 20px;
+  justify-content: flex end;
+  margin-left: 198px;
+}
+
+/* Medium size images */
+.image-wrapper img {
+  width: 100%;
+  max-width: 250px;
+  height: 400px;
+  right: 60px;
+  object-fit: cover;
+  border-radius: 20px;
+}
+
+.story-img:hover {
+  transform: scale(1.03);
+}
+
+.blink {
+  animation: blink 0.3s ease-in-out 3;
+  transform: scale(1.05);
+}
+
+/* Responsive */
+@media (max-width: 991px) {
+  .image-wrapper {
+    flex-direction: column;
+  }
+
+  .image-wrapper img {
+    width: 80%;
+    height: auto;
+  }
+}
+
+@media (max-width: 576px) {
+  .image-wrapper img {
+    width: 100%;
+  }
+}
+
+
+/* Hero Wrapper */
+.wrapper {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+}
+
+.side-img {
+  width: 100%;
+  max-width: 100%;
+  height: 80vh;
+  object-fit: cover;
+  border-radius: 30px;
+  cursor: pointer;
+}
+
+.subtitle {
+  font-size: 14px;
+  color: #666;
+  max-width: 420px;
+  margin: auto;
+  cursor: pointer;
+}
+
+.title img,
+img[alt="flower-image"] {
+  width: 60px;
+  height: auto;
+  margin-bottom: 10px;
+  object-fit: contain;
+}
+
+.icons a {
+  width: 42px;
+  height: 42px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: #b77b5c;
+  color: #fff;
+  margin: 5px;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.icons a:hover {
+  transform: translateY(-3px);
+  background: #000;
+}
+
+.btn-custom {
+  display: inline-block !important;
+  background: transparent !important;
+  color: #333 !important;
+  padding: 10px 20px !important;
+  border: 1px solid #000 !important;
+  z-index: 999;
+  align-items: center !important;
+}
+
+.btn-custom:hover {
+  background: #a17848 !important;
+  color: #fff !important;
+}
+
+.blinkable {
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.8;
+  }
+}
+
+
+/* ------------------------------------------------------------------------------------------------ */
+
+/* from the Blog */
+
+.blog-banner {
+  height: 1150px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.banner-title {
+  font-size: 3.5rem;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+
+.banner-breadcrumb a {
+  color: #ddd;
+  text-decoration: none;
+  font-size: 1rem;
+  transition: color 0.3s;
+}
+
+.banner-breadcrumb a:hover {
+  color: #FAF8F0;
+}
+
+.breadcrumb-separator {
+  color: #b38b6d;
+  font-size: 0.7rem;
+  margin: 0 10px;
+}
+
+.banner-breadcrumb .active-page {
+  color: #fff;
+  font-weight: 500;
+}
+
+
+/* Counting Down */
+.container {
+  text-align: center;
+  padding: 20px;
+}
+
+/* Titles */
+.title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #0a090a;
+  margin-bottom: 15px;
+}
+
+p {
+  font-size: 1rem;
+  color: #666;
+  max-width: 800px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* Countdown layout */
+#countdown {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+}
+
+/* box */
+#countdown .col {
+  background: rgba(255, 255, 255, 0.2);
+  padding: 35px;
+  border-radius: 15px;
+  min-width: 150px;
+  flex: 1 1 120px;
+  max-width: 160px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.title h1 {
+  color: #0a090a !important;
+}
+
+/* Numbers */
+#countdown h2 {
+  font-size: 2rem;
+  margin: 0;
+}
+
+/* Labels */
+#countdown p {
+  display: block;
+  margin-top: 5px;
+  color: #666;
+}
+
+/* ------------------ RESPONSIVE BREAKPOINTS ------------------ */
+
+/* Tablets */
+@media (max-width: 768px) {
+  .title {
+    font-size: 2.2rem;
+  }
+
+  .sub-title {
+    font-size: 1rem;
+  }
+
+  #countdown .col {
+    min-width: 100px;
+    max-width: 130px;
+    padding: 15px;
+  }
+
+  #countdown h2 {
+    font-size: 1.8rem;
+  }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  .title {
+    font-size: 1.8rem;
+  }
+
+  .sub-title {
+    font-size: 0.95rem;
+  }
+
+  #countdown {
+    gap: 10px;
+  }
+
+  #countdown .col {
+    flex: 1 1 45%;
+    max-width: 45%;
+    padding: 12px;
+  }
+
+  #countdown h2 {
+    font-size: 1.5rem;
+  }
+}
+
+
+/* Our Services */
+.our-services-section {
+  background: #fff;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Decorative flower */
+.flower-decoration {
+  text-align: center;
+  margin-top: 60px;
+}
+
+.flower-decoration img {
+  width: 80px;
+  opacity: 0.7;
+  margin-bottom: 10px;
+}
+
+/* Title */
+.our-services h2 {
+  font-size: 32px;
+  font-weight: 700;
+  color: #333;
+}
+
+/* Description */
+.our-services .description {
+  max-width: 600px;
+  margin: 0 auto;
+  color: #777;
+  font-size: 15px;
+}
+
+/* Grid Layout */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+}
+
+/* Service Card */
+.service-card {
+  position: relative;
+  border-radius: 15px;
+  overflow: hidden;
+  cursor: pointer;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-card img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+/* Hover Effects */
+.service-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+.service-card:hover img {
+  transform: scale(1.1);
+}
+
+/* Label */
+.service-label {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 12px;
+  background: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  font-size: 16px;
+  text-align: center;
+  font-weight: 500;
+}
+
+
+/* =======================
+  RESPONSIVE DESIGN
+======================= */
+
+/* Tablet */
+@media (max-width: 992px) {
+  .services-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .service-card img {
+    height: 220px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 576px) {
+  .services-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .our-services h2 {
+    font-size: 26px;
+  }
+
+  .service-card img {
+    height: 200px;
+  }
+}
+
+
+/* Stats Section */
+.stats-section {
+  background: #fffdf6;
+}
+
+.stat-box h2 {
+  font-size: 48px;
+  font-weight: 700;
+  color: #000;
+}
+
+.divider {
+  width: 40px;
+  height: 2px;
+  background: #000;
+  margin: 0 auto 8px;
+  position: relative;
+}
+
+.divider::after {
+  content: "✿";
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #fffdf6;
+  padding: 0 4px;
+}
+
+.stat-box p {
+  font-size: 18px;
+  color: #b8734a;
+}
+
+@media(max-width: 576px) {
+  .stat-box h2 {
+    font-size: 32px;
+  }
+}
+
+/* Testimonial Section */
+.testimonial-section {
+  position: relative;
+  min-height: 100vh;
+  background: url("../Images/wedding-Location.jpg") center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  padding: 80px 0;
+}
+
+/* Dark Overlay */
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.70);
+  z-index: 1;
+}
+
+/* Title */
+.title {
+  font-weight: 600;
+  font-size: clamp(22px, 3vw, 42px);
+  line-height: 1.3;
+  z-index: 2;
+  position: relative;
+}
+
+/* Marquee Wrapper */
+.marquee {
+  overflow: hidden;
+  margin-top: 40px;
+  position: relative;
+  z-index: 1;
+}
+
+/* Track */
+.marquee-track {
+  display: flex;
+  gap: 25px;
+  width: max-content;
+  animation: scroll 25s linear infinite;
+  will-change: transform;
+}
+
+/* Pause on hover */
+.marquee:hover .marquee-track {
+  animation-play-state: paused;
+}
+
+/* Smooth Infinite Scroll */
+@keyframes scroll {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+/* Testimonial Card */
+.testimonial-card {
+  width: 320px;
+  flex-shrink: 0;
+  background: #fff;
+  color: #222;
+  padding: 22px;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.22);
+  text-align: left;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.testimonial-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.28);
+}
+
+.testimonial-card h5 {
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.testimonial-card small {
+  color: #777;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.testimonial-card p {
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* Tablet */
+
+@media (max-width: 1024px) {
+  .testimonial-card {
+    width: 280px;
+    padding: 18px;
+  }
+}
+
+/* Mobile */
+
+@media (max-width: 768px) {
+  .testimonial-section {
+    padding: 60px 20px;
+    min-height: auto;
+  }
+
+  .title {
+    text-align: center;
+  }
+
+  .marquee {
+    margin-top: 25px;
+  }
+
+  .testimonial-card {
+    width: 240px;
+  }
+
+  .marquee-track {
+    gap: 18px;
+    animation-duration: 20s;
+  }
+}
+
+/* Small Mobile */
+
+@media (max-width: 480px) {
+  .testimonial-card {
+    width: 220px;
+    padding: 16px;
+    border-radius: 12px;
+  }
+
+  .testimonial-card p {
+    font-size: 13px;
+  }
+}
+
+
+/* Contact Section */
+.main-container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+}
+
+.wedding-img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+.content-section {
+  padding: 20px;
+}
+
+
+.description-text {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin-bottom: 35px;
+}
+
+/* Form */
+.form-container {
+  border: 1px solid black;
+  padding: 40px;
+  background-color: #ffffff;
+  border-radius: 2px;
+}
+
+.form-floating>.form-control {
+  border: none;
+  border-bottom: 1px solid #999999;
+  border-radius: 0;
+  padding-left: 0;
+  padding-right: 0;
+  background-color: transparent;
+}
+
+.form-floating>.form-control:focus {
+  box-shadow: none;
+  border-color: var(--border-color);
+}
+
+.form-floating>label {
+  padding-left: 0;
+  color: #888888;
+}
+
+.form-floating>.form-control:focus~label,
+.form-floating>.form-control:not(:placeholder-shown)~label {
+  color: #222222;
+  transform: scale(0.85) translateY(-0.5rem) translateX(0rem);
+}
+
+.btn-custom {
+  background-color: transparent;
+  border: 1px solid black;
+  color: #222222;
+  padding: 10px 30px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.btn-custom:hover {
+  background-color: #a17848;
+  color: #ffffff;
+}
+
+@media (max-width: 768px) {
+  .heading-title {
+    font-size: 2.2rem;
+  }
+
+  .form-container {
+    padding: 25px;
+  }
+}
+
+/* The from blog */
+.section-title {
+  margin: 40px 0;
+  font-weight: bold;
+}
+
+/* Card Style */
+.blog-card {
+  border: none;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transition: 0.3s;
+  height: 100%;
+}
+
+.blog-card:hover {
+  transform: translateY(-5px);
+}
+
+.blog-img {
+  height: 220px;
+  object-fit: cover;
+}
+
+/* Badge */
+.badge-category {
+  position: absolute;
+  top: 10px;
+  left: 15px;
+  background: #c49a6c;
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 10px;
+  font-size: 14px;
+}
+
+/* Read More Button */
+.read-more {
+  border: 1px solid black;
+  padding: 8px 14px;
+  border-radius: 6px;
+  font-size: 14px;
+  transition: 0.3s ease;
+  cursor: pointer;
+
+  display: inline-block;
+  background: transparent;
+  font-weight: bold;
+  font-size: 15px;
+}
+
+.read-more:hover {
+  background: #573718;
+  color: #fff;
+}
+
+
+
+/* Get In Touch Section */
+.contact-touch-section {
+  position: relative;
+  padding: 80px 0;
+  background: #fff3e6;
+  margin-bottom: -120px;
+  z-index: 2;
+}
+
+.contact-box {
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, .15);
+}
+
+.left-content {
+  padding: 50px;
+}
+
+.left-content h2 {
+  font-size: 42px;
+  font-weight: 700;
+}
+
+.left-content .best {
+  font-style: italic;
+  font-size: 25px;
+  font-weight: 700;
+}
+
+.left-content p {
+  color: #666;
+  line-height: 1.8;
+}
+
+.signature {
+  font-family: 'Great Vibes', cursive;
+  font-size: 55px;
+}
+
+.right-content {
+  background: #3d0909;
+  color: #fff;
+  padding: 55px 40px;
+  height: 100%;
+}
+
+.info-box {
+  display: flex;
+  gap: 15px;
+  margin: 20px 0;
+}
+
+.icon {
+  width: 45px;
+  height: 45px;
+  background: rgba(255, 255, 255, .15);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Map */
+.map-section iframe {
+  width: 100%;
+  height: 450px;
+  border: none;
+}
+
+/* Responsive */
+@media (max-width: 991px) {
+  .contact-section {
+    margin-bottom: 0;
+  }
+
+  .right-content {
+    text-align: center;
+  }
+
+  .info-box {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 768px) {
+
+  .left-content,
+  .right-content {
+    padding: 30px 20px;
+  }
+
+  .left-content h2 {
+    font-size: 28px;
+  }
+
+  .signature {
+    font-size: 45px;
+  }
+
+  .map-section iframe {
+    height: 300px;
+  }
+}
+
+
+/* ----------------------------------------- FOOTER PAGE ----------------------------------------- */
+
+footer {
+  background-color: #0b0b0b !important;
+}
+
+.font-serif {
+  font-weight: 500;
+  font-size: 1.45rem;
+  letter-spacing: 0.3px;
+
+}
+
+.footer-links a {
+  transition: color 0.25s ease;
+  font-size: 0.95rem;
+}
+
+.footer-links a:hover {
+  color: #ffffff !important;
+}
+
+.social-links a {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.07);
+  color: #fff;
+  transition: all 0.3s ease;
+  font-size: 0.9rem;
+}
+
+.social-links a:hover {
+  background-color: #a17848;
+  color: #000000 !important;
+  transform: translateY(-2px);
+}
+
+.footer-form input::placeholder {
+  color: #6c757d;
+  font-size: 0.95rem;
+}
+
+.footer-form input {
+  border-color: rgba(255, 255, 255, 0.3) !important;
+}
+
+.footer-form input:focus {
+  border-color: #ffffff !important;
+}
+
+.btn-submit {
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  font-size: 0.85rem;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+}
+
+.btn-submit:hover {
+  background-color: #a17848;
+  color: #fff !important;
+}
+
+
+/* ///////////////////////////////////// About Page /////////////////////////////////// */
+
+/* ===== HERO SECTION ===== */
+.hero {
+  position: relative;
+  height: 140vh;
+  background: url("../Images/About-Section.jpg") center/cover no-repeat;
+}
+
+/* Dark overlay */
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+}
+
+/* Content above overlay */
+.hero .content {
+  position: relative;
+  z-index: 2;
+}
+
+/* Breadcrumb styling */
+.breadcrumb-item a {
+  text-decoration: none;
+}
+
+/*OUR STORY SECTION */
+.story-section {
+  padding: 70px 0;
+}
+
+.story-image {
+  height: 500px;
+  overflow: hidden;
+}
+
+.story-image img {
+  width: 90%;
+  object-fit: cover;
+  transition: 0.4s ease;
+  cursor: pointer;
+}
+
+.story-image:hover img {
+  transform: scale(1.05);
+}
+
+.story-content {
+  margin-top: -30px;
+}
+
+.story-title {
+  text-align: left;
+  margin-top: -20px;
+}
+
+.story-text {
+  font-size: 14px;
+  line-height: 1.5;
+  color: #444;
+  text-align: left;
+}
+
+.feature-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.feature-list li {
+  margin-bottom: 18px;
+  font-size: 14px;
+  color: #222;
+  display: flex;
+}
+
+.feature-list i {
+  color: #b68c5a;
+  margin-right: 8px;
+  font-size: 15px;
+  margin-top: 4px;
+}
+
+/* Tablet */
+@media (max-width: 991px) {
+
+  .story-section {
+    padding: 60px 0;
+  }
+
+  .story-title {
+    font-size: 42px;
+    margin-top: 30px;
+  }
+
+  .story-content {
+    padding-left: 0;
+  }
+}
+
+/* Mobile */
+@media (max-width: 576px) {
+
+  .story-title {
+    font-size: 32px;
+  }
+
+  .story-text {
+    font-size: 15px;
+  }
+
+  .feature-list li {
+    font-size: 16px;
+  }
+}
+
+/* FAq Section */
+.faq-section {
+  padding: 80px 0;
+  position: relative;
+}
+
+.faq-tag {
+  font-size: 25px;
+  color: #333;
+  text-align: left;
+}
+
+.faq-title {
+  font-size: 35px;
+  color: #111;
+  margin-bottom: 55px;
+  text-align: left;
+}
+
+.btn-special {
+  padding: 12px 35px;
+  border: 1px solid black;
+  border-radius: 8px;
+  transition: 3s;
+  display: block;
+  width: fit-content;
+  text-align: left;
+  transition: 0.3s;
+}
+
+.btn-special:hover {
+  background: #a17848;
+  color: white;
+}
+
+.right-box p {
+  text-align: right;
+}
+
+.accordion-button::after {
+  display: none;
+}
+
+.accordion-button {
+  position: relative;
+  padding-right: 50px;
+}
+
+.accordion-button::before {
+  content: "+";
+  position: absolute;
+  right: 20px;
+  font-size: 24px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.accordion-button:not(.collapsed)::before {
+  content: "-";
+}
+
+.accordion-body {
+  font-size: 18px;
+  color: #666;
+  line-height: 1.8;
+  padding: 25px;
+  text-align: left;
+}
+
+@media(max-width:992px) {
+  .faq-title {
+    font-size: 38px;
+  }
+
+  .left-box {
+    margin-bottom: 40px;
+  }
+}
+
+@media(max-width:576px) {
+  .faq-title {
+    font-size: 30px;
+  }
+
+  .accordion-button {
+    font-size: 18px;
+    padding: 18px;
+  }
+}
+
+
+/* //////////////////////////////////// Wedding Plan Pages ////////////////////////////////// */
+
+.banner-section {
+  min-height: 150vh;
+  background: url(../Images/Engagement-ring.jpg) center center/cover no-repeat;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+}
+
+.banner-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, .45);
+}
+
+.banner-text {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+  padding: 20px;
+}
+
+img {
+  font-size: 35px;
+  margin-bottom: 20px;
+}
+
+.banner-text h1 {
+  font-size: 90px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  letter-spacing: 2px;
+}
+
+.banner-text p {
+  font-size: 28px;
+  margin-left: 35px;
+  color: #fff;
+}
+
+.btn-book {
+  border: 2px solid #fff;
+  color: white;
+  padding: 14px 45px;
+  font-size: 18px;
+  border-radius: 30px;
+  background: transparent;
+  transition: .3s;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.btn-book:hover {
+  background: #a17848;
+  color: #fff;
+}
+
+@media (max-width:992px) {
+  .hero h1 {
+    font-size: 65px;
+  }
+
+  .hero p {
+    font-size: 22px;
+  }
+}
+
+@media (max-width:576px) {
+  .hero h1 {
+    font-size: 42px;
+  }
+
+  .hero p {
+    font-size: 18px;
+  }
+
+  .btn-book {
+    padding: 12px 30px;
+    font-size: 16px;
+  }
+}
+
+.counter-number {
+  font-size: 3.5rem;
+  font-weight: 500;
+  color: #111;
+  margin-bottom: 10px;
+}
+
+.divider {
+  width: 100px;
+  margin: 10px auto;
+}
+
+.divider::before,
+.divider::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: #c7c7c7;
+}
+
+.flower-icon {
+  font-size: 0.8rem;
+  color: #b38b6d;
+  padding: 0 10px;
+}
+
+.counter-label {
+  font-size: 1.1rem;
+  color: #a97e62;
+  font-weight: 500;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+/* Wedding Rictuals Gallery */
+.gallery-title {
+  color: #4a1525;
+  font-weight: 700;
+  margin-bottom: 30px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 15px;
+}
+
+@media (min-width: 768px) {
+  .gallery-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .img-large-vertical {
+    grid-row: span 2;
+  }
+}
+
+.gallery-item {
+  position: relative;
+  overflow: hidden;
+  border-radius: 4px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  cursor: pointer;
+  background-color: #fff;
+  height: 100%;
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+  display: block;
+}
+
+.gallery-item:hover img {
+  transform: scale(1.05);
+}
+
+@media (min-width: 768px) {
+  .img-large-vertical {
+    height: 620px;
+  }
+
+  .img-standard {
+    height: 300px;
+  }
+}
+
+/* ----------------------------------------------------------------------------------------- */
+
+/* --------------- Blog Page --------------------------- */
+
+:root {
+  --theme-brown: #A97E62;
+  --theme-dark-brown: #8C6246;
+  --theme-bg-light: #FAF8F0;
+}
+
+
+.blog-card {
+  background-color: #fff;
+  transition: transform 0.3s ease;
+}
+
+.img-wrapper {
+  aspect-ratio: 4 / 3;
+}
+
+.blog-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.blog-card:hover .blog-img {
+  transform: scale(1.06);
+}
+
+.bg-theme {
+  background-color: var(--theme-brown) !important;
+  font-size: 0.75rem;
+  font-weight: 400;
+  padding: 6px 12px;
+}
+
+.blog-meta {
+  font-size: 0.85rem;
+  color: #777;
+}
+
+.blog-card-title {
+  font-size: 1.4rem;
+  font-weight: 500;
+  color: #111;
+  line-height: 1.3;
+}
+
+.blog-card-text {
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+.btn-readmore {
+  border-color: #222;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  border-radius: 4px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.btn-readmore:hover {
+  background-color: var(--theme-brown);
+  border-color: var(--theme-brown);
+  color: #fff;
+}
+
+
+.widget-title {
+  font-size: 1.5rem;
+  font-weight: 500;
+  position: relative;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+
+.btn-theme {
+  background-color: var(--theme-brown);
+  color: white;
+  border: 1px solid var(--theme-brown);
+  padding: 10px 16px;
+}
+
+.btn-theme:hover {
+  background-color: var(--theme-dark-brown);
+  color: white;
+}
+
+.search-box input {
+  padding: 10px 15px;
+  border: 1px solid #ced4da;
+  font-size: 0.95rem;
+}
+
+.recent-thumb {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+}
+
+.recent-link {
+  font-size: 0.95rem;
+  line-height: 1.2;
+  display: inline-block;
+  transition: color 0.2s;
+}
+
+.recent-link:hover {
+
+  color: var(--theme-brown) !important;
+}
+
+.sidebar {
+  text-align: left !important;
+  padding-right: 25px;
+  padding-left: 0;
+}
+
+.sidebar-widget {
+  text-align: left !important;
+}
+
+.widget-title {
+  font-size: 1.8rem;
+  font-weight: 500;
+  color: #000;
+  text-align: left !important;
+  padding-bottom: 6px;
+  border-bottom: 1px solid #A97E62;
+  display: block;
+  width: 100%;
+}
+
+.custom-sidebar-list {
+  text-align: left !important;
+  padding-left: 0 !important;
+}
+
+.custom-sidebar-list a {
+  font-size: 1.15rem;
+  color: #2c3e50;
+  text-decoration: none;
+  display: inline-block;
+  text-align: left;
+  transition: transform 0.2s, color 0.2s;
+}
+
+.custom-sidebar-list a:hover {
+  color: #A97E62;
+  transform: translateX(4px);
+}
+
+
+.list-arrow {
+  color: #A97E62;
+  font-size: 1.3rem;
+  margin-right: 8px;
+}
+
+.btn-tag {
+  display: inline-block;
+  padding: 6px 10px;
+  font-size: 0.95rem;
+  color: #000;
+  background-color: #fff;
+  text-decoration: none;
+  border: 1px solid #000;
+  border-radius: 6px;
+  font-weight: 400;
+  transition: all 0.3s ease;
+}
+
+.btn-tag:hover {
+  background-color: #A97E62;
+  border-color: #A97E62;
+  color: #fff;
+  box-shadow: 0 4px 10px rgba(169, 126, 98, 0.2);
+}
+
+
+/* --------------------------------------------------------------------------------------------- */
+
+/* ----------- Pages ------------------ */
+
+.services-hero {
+  background: url('../Images/wedding-Decoration-image.jpg') no-repeat center center;
+  background-size: cover;
+  width: 100%;
+  height: 1000px;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50px;
+  height: 50px;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 0;
+}
+
+.font-serif {
+  font-family: 'Georgia', 'Times New Roman', serif;
+  letter-spacing: 1px;
+}
+
+.hover-opacity-100:hover {
+  opacity: 1 !important;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.breadcrumb-item+.breadcrumb-item::before {
+  display: none;
+}
+
+/* Exceptional Wedding Services */
+.services-section {
+  padding: 80px 0;
+}
+
+.section-title {
+  font-size: 2.5rem;
+  font-weight: 500;
+  line-height: 1.15;
+  color: #000;
+  text-align: left;
+}
+
+.service-cards {
+  background: transparent;
+  border: 1px solid #222;
+  border-radius: 20px;
+  padding: 45px 30px;
+  text-align: center;
+  height: 100%;
+  transition: all 0.3s ease;
+}
+
+.service-cards:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  background-color: #fff3f4;
+}
+
+.service-icon {
+  font-weight: 900;
+  font-size: 40px;
+  color: #b07b58;
+  margin-bottom: 20px;
+  display: inline-block;
+}
+
+.service-title {
+  font-size: 2rem;
+  margin-bottom: 15px;
+  color: #111;
+}
+
+.service-text {
+  font-size: 1rem;
+  color: #444;
+  line-height: 1.8;
+}
+
+@media (max-width: 991px) {
+  .section-title {
+    font-size: 2.8rem;
+    text-align: center;
+    margin-bottom: 30px;
+  }
+}
+
+@media (max-width: 576px) {
+  .section-title {
+    font-size: 2.2rem;
+  }
+
+  .service-title {
+    font-size: 1.5rem;
+  }
+
+  .service-cards {
+    padding: 30px 20px;
+  }
+}
+
+/* ------------------------------------------------------------------------------------------------ */
+
+/* ------------------------------ Contact Us ---------------------------------- */
+
+/* Hero-Banner */
+
+.hero-banner {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)),
+    url('../Images/wedding-decor.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 550px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  text-align: center;
+  transition: all 0.3s ease-in-out;
+}
+
+.banner-title {
+  font-size: 4rem;
+  font-weight: 400;
+  margin-bottom: 12px;
+  letter-spacing: 0.5px;
+}
+
+.banner-breadcrumbs {
+  font-size: 1rem;
+  font-weight: 400;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.banner-breadcrumbs a {
+  color: #ffffff;
+  text-decoration: none;
+  opacity: 0.9;
+  transition: opacity 0.2s ease;
+}
+
+.banner-breadcrumbs a:hover {
+  opacity: 1;
+  text-decoration: underline;
+}
+
+.breadcrumb-separator {
+  font-size: 0.8rem;
+  opacity: 0.7;
+}
+
+/* --- Responsive Breakpoints --- */
+@media (max-width: 992px) {
+  .hero-banner {
+    min-height: 380px;
+  }
+
+  .banner-title {
+    font-size: 3.2rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .hero-banner {
+    min-height: 280px;
+  }
+
+  .banner-title {
+    font-size: 2.5rem;
+    margin-bottom: 8px;
+  }
+
+  .banner-breadcrumbs {
+    font-size: 0.9rem;
+    gap: 8px;
+  }
+}
+
+/* Contact Section */
+.section-title {
+  font-size: 2.75rem;
+  color: #1A1A1A;
+  font-weight: 500;
+}
+
+.contact-card {
+  background-color: transparent;
+  border: 1px solid #1A1A1A;
+  border-radius: 16px;
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+.contact-card:hover {
+  background-color: #FFFFFF;
+  box-shadow: 0 10px 30px rgba(26, 26, 26, 0.05);
+  transform: translateY(-5px);
+  background-color: #ffebee;
+}
+
+.icon-wrapper i {
+  font-size: 2.5rem;
+  color: #A3704C;
+}
+
+.card-heading {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem;
+  color: #1A1A1A;
+}
+
+.card-text {
+  font-size: 0.95rem;
+  color: #4A4A4A;
+}
+
+.card-text a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.card-text a:hover {
+  color: #A3704C;
+}
+
+/* Contact form */
+.main-heading {
+  font-size: 2.8rem;
+  font-weight: 400;
+  margin-bottom: 1.5rem;
+}
+
+.sub-text {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 2.5rem;
+}
+
+.form-container {
+  border: 1px solid #1a1a1a;
+  padding: 2.5rem;
+  background-color: transparent;
+}
+
+.custom-input {
+  border: none;
+  border-bottom: 1px solid #1a1a1a;
+  border-radius: 0;
+  background-color: transparent;
+  padding-left: 0;
+  padding-right: 0;
+  color: var(--text-dark);
+  box-shadow: none !important;
+}
+
+.custom-input:focus {
+  background-color: transparent;
+  border-color: #666666;
+}
+
+.custom-input::placeholder {
+  color: #b3b3b3;
+}
+
+.btn-send {
+  border: 1px solid #1a1a1a;
+  background-color: transparent;
+  color: #1a1a1a;
+  border-radius: 4px;
+  padding: 0.6rem 2rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.btn-send:hover {
+  background-color: #a17848;
+  color: #fff;
+}
+
+.image-box {
+  width: 100%;
+  height: 100%;
+}
+
+.image-box img {
+  width: 100%;
+  height: 700px;
+  object-fit: cover;
+  display: block;
+}
+
+@media (max-width:991px) {
+  .image-box img {
+    height: 500px;
+  }
+}
+
+@media (max-width:767px) {
+  .image-box img {
+    height: auto;
+    margin-top: 20px;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .main-heading {
+    font-size: 2.2rem;
+  }
+
+  .form-container {
+    padding: 1.5rem;
+  }
+
+  .image-wrapper {
+    min-height: 350px;
+    margin-top: 2rem;
+  }
+}
